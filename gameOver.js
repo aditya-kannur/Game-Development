@@ -10,7 +10,7 @@ var home = document.getElementById("home")
 const playAgain = document.getElementById("play-again")
 
 home.onclick = () => {
-    window.location.href="./start.html"
+    window.location.href="./index.html"
 }
 
 playAgain.onclick = () => {
