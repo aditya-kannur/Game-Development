@@ -1,4 +1,12 @@
-const startButton = document.getElementById("start-button")
+const startButton = document.getElementById("start-button");
+
 startButton.onclick = () => {
-    window.location.href="./game.html"
-}
+    const nameInput = document.getElementById("name").value;
+    const usernameInput = document.getElementById("username").value;
+
+    if (nameInput.trim() !== "" && usernameInput.trim() !== "") {
+        window.location.href = "./game.html";
+    } else {
+        alert("Enter both name and username to procced.");
+    }
+};

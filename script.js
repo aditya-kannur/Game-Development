@@ -7,6 +7,13 @@ document.addEventListener("DOMContentLoaded", () => {
   let timerId;
   let scores = 0
   let lines = 0
+  const colors = [
+    'orange',
+    'red',
+    'purple',
+    'green',
+    'pink'
+  ]
   
   const width = 10
 
@@ -58,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function draw () {
     current.forEach(index => {
       squares[currentPosition + index].classList.add("tetromino")
+      squares[currentPosition + index].style.backgroundColor = colors[random]
     })
   }
 
@@ -65,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function undraw () {
     current.forEach(index=> {
       squares[currentPosition + index].classList.remove("tetromino")
+      squares[currentPosition + index].style.backgroundColor = ''
     })
   }
 
@@ -125,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
   //move tetromino right, unless at edge
   function moveRight() {
-    undraw();
+    undraw();   
     const isAtRightEdge = current.some(index => (currentPosition + index) % width === width - 1);
     if (!isAtRightEdge) currentPosition += 1;
     if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
@@ -163,10 +172,11 @@ document.addEventListener("DOMContentLoaded", () => {
   function displayShape() {
     displaySquares.forEach(squares => {
       squares.classList.remove("tetromino")
+      squares.style.backgroundColor = ''
     })
     upNextTetrominoes[nextRandom].forEach(index => {
       displaySquares[displayIndex + index].classList.add("tetromino")
-      // displaySquares[displayIndex + index].classList.add("tetrimin")
+      displaySquares[displayIndex + index].style.backgroundColor = colors[nextRandom]
     })
   }
   displayShape()
@@ -176,6 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (timerId){
       clearInterval(timerId)
       timerId = null
+
     }else {
       draw()
       timerId = setInterval(movedown, 500)
@@ -196,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
         row.forEach(index => {
           squares[index].classList.remove("taken")
           squares[index].classList.remove("tetromino")
-  
+          squares[index].style.backgroundColor = ''
         })
         const sqaureRemoved = squares.splice(i, width)
         squares = sqaureRemoved.concat(squares)
