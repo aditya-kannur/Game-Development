@@ -3,6 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let squares = Array.from(document.querySelectorAll("#grid div"))
   var scoresDisplay = document.getElementById("scores")
   var linesDisplay = document.getElementById("lines")
+  const backgroundMusic = document.getElementById("background-music");
+  backgroundMusic.play();
   let nextRandom = 0
   let timerId;
   let scores = 0
@@ -11,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     'orange',
     'red',
     'purple',
-    'green',
+    'yellow',
     'pink'
   ]
   

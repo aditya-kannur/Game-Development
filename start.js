@@ -1,12 +1,14 @@
 const startButton = document.getElementById("start-button");
+const backgroundMusic = document.getElementById("background-music");
 
-startButton.onclick = () => {
-    const nameInput = document.getElementById("name").value;
-    const usernameInput = document.getElementById("username").value;
+startButton.addEventListener("click", () => {
+    const name = document.getElementById("name").value;
+    const username = document.getElementById("username").value;
 
-    if (nameInput.trim() !== "" && usernameInput.trim() !== "") {
+    if (name && username) {
         window.location.href = "./game.html";
+        backgroundMusic.play();
     } else {
-        alert("Enter both name and username to procced.");
+        alert("Please fill in both name and username.");
     }
-};
+});
